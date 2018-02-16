@@ -1,0 +1,5 @@
+- name: Start Servers
+  clc_server:
+    server_ids:
+      - UC1ACCT-TEST01
+    state: started
