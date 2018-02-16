@@ -1,8 +1,8 @@
 ---
 - name: execute commands.
-  hosts: localhost
+  hosts: 10.71.194.86
   user: root
   tasks:
-     - name: Transfer the script
-       shell: whoami
+     - name: commmand execution
+       shell: touch /root/abc.txt
 
