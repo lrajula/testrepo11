@@ -1,0 +1,7 @@
+---
+
+- name: Stop Servers
+  clc_server:
+    server_ids:
+      - NY1TRITTEST124
+    state: stopped
