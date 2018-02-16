@@ -1,0 +1,16 @@
+---
+- name: Create a Server
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: Deploy a new Ubuntu VM to POC Group
+      clc_server:
+        name: test
+        template: ubuntu-14-64
+        location: NY1-US East (New York)
+        count: 1
+        group: 'POC'
+      register: clc
+    - name: debug
+debug: var=clc.server_ids
