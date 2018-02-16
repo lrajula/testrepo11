@@ -1,0 +1,21 @@
+---
+
+- name: Deploy ubuntu hosts at CLC
+  hosts: localhost
+  vars:
+    server_group: 'POC'
+    server_count: 2
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: Deploy 2 Ubuntu Servers at CLC
+      clc_server:
+        name: ubusrv
+        location: NY1
+        template: ubuntu-14-64
+        count: "{{ server_count }}"
+        group: "{{ server_group }}"
+      register: clc
+
+    - name: debug
+      debug: var=clc.server_ids
