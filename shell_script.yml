@@ -1,8 +1,10 @@
 ---
 - name: execute commands.
   hosts: localhost
+  sudo: yes
   user: root
   tasks:
      - name: commmand execution
-       shell: touch /root/abc.txt
+       shell: ls -ltrh /root 
+       
 
