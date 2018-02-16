@@ -13,5 +13,4 @@
         group: 'POC'
       register: clc
     - name: debug
-debug: var=clc.server_ids
-
+      debug: var=clc.server_ids
