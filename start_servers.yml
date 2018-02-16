@@ -1,5 +1,11 @@
+---
 - name: Start Servers
-  clc_server:
-    server_ids:
-      - UC1ACCT-TEST01
-    state: started
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: start list of servers
+      clc_server:
+        server_ids:
+         - NY1TRITTEST124
+        state: stopped
