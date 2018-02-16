@@ -1,10 +1,10 @@
 ---
-- name: Delete  Servers
+- name: Stops  Servers
   hosts: localhost
   gather_facts: False
   connection: local
   tasks:
-    - name: Delete servers
+    - name: stop list of  servers
       clc_server:
         server_ids:
          - NY1TRITTEST124
