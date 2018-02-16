@@ -1,6 +1,6 @@
 ---
 - name: execute commands.
-  hosts: 10.71.194.86
+  hosts: localhost
   user: root
   tasks:
      - name: commmand execution
