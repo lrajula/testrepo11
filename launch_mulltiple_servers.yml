@@ -4,7 +4,7 @@
   hosts: localhost
   vars:
     server_group: 'POC'
-    server_count: 2
+    server_count: 1
   gather_facts: False
   connection: local
   tasks:
