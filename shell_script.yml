@@ -6,7 +6,7 @@
   vars:
     public_key: "YOUR_PUBLIC_KEY_GOES_HERE"
     server_to_start: uc1acctsrvr01
-    server_password: PASSWORD_HERE
+    server_password: VWxoRQ~h6gApeB/#
   tasks:
     - name: Start Server
       clc_server:
@@ -24,7 +24,7 @@
       with_items: start_server.servers
 
     - name: Deploy SSH Key to New Servers (Ubuntu)
-      shell: "echo '{{ public_key }}'|sshpass -p '{{ server_password }}' ssh root@{{ item.details.ipAddresses[0].internal }} 'cat >> ~/.ssh/authorized_keys'"
+      shell: "sshpass -p '{{ server_password }}' ssh root@{{ item.details.ipAddresses[0].internal }} 'cat >> ~/.ssh/authorized_keys'"
       with_flattened:
         - start_server.servers
 
@@ -39,11 +39,6 @@
 
 - name: Execute shell multiple commands
   shell: |
-    sh /tmp/start.sh
-    whoami
-    whereisjava
-    pwd
-    ls -ltrh
     touch /tmp/abc.txt
     touch /tmp/a.txt
     
