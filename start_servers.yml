@@ -7,6 +7,11 @@
     - name: start list of  servers
       clc_server:
         server_ids:
+         - NY1TRITSEL01
+         - NY1TRITSEL02
+         - NY1TRITSEL03
+         - NY1TRITSEL04
+         - NY1TRITSEL05
          - NY1TRITSEL12
          - NY1TRITSEL13
          - NY1TRITSEL14
@@ -38,4 +43,12 @@
          - NY1TRITSEL40
          - NY1TRITSEL41
          - NY1TRITSEL42
+         - NY1TRITSEL49
+         - NY1TRITSEL50
+         - NY1TRITSEL51
+         - NY1TRITSEL52
+         - NY1TRITSEL53
+         - NY1TRITSEL54
+         - NY1TRITSEL55
+         - NY1TRITSEL56
         state: started
