@@ -35,9 +35,12 @@
         groupname=SERVERS_GRP
       with_items: start_server.servers
 
-
-- name: Execute shell multiple commands
-  shell: |
-    touch /tmp/abc.txt
-    touch /tmp/a.txt
-    
+- name: Install Some Stuff
+  hosts: SERVERS_GRP
+  gather_facts: True
+  remote_user: root
+  tasks:
+   - name: Execute shell multiple commands
+     shell: |
+      touch /tmp/abc.txt
+      touch /tmp/a.txt
