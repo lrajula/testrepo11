@@ -1,0 +1,41 @@
+---
+- name: Stops  Servers
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: stop list of  servers
+      clc_server:
+        server_ids:
+         - NY1TRITSEL12
+         - NY1TRITSEL13
+         - NY1TRITSEL14
+         - NY1TRITSEL15
+         - NY1TRITSEL16
+         - NY1TRITSEL17
+         - NY1TRITSEL18
+         - NY1TRITSEL19
+         - NY1TRITSEL20
+         - NY1TRITSEL21
+         - NY1TRITSEL22
+         - NY1TRITSEL23
+         - NY1TRITSEL24
+         - NY1TRITSEL25
+         - NY1TRITSEL26
+         - NY1TRITSEL27
+         - NY1TRITSEL28
+         - NY1TRITSEL29
+         - NY1TRITSEL30
+         - NY1TRITSEL31
+         - NY1TRITSEL32
+         - NY1TRITSEL33
+         - NY1TRITSEL34
+         - NY1TRITSEL35
+         - NY1TRITSEL36
+         - NY1TRITSEL37
+         - NY1TRITSEL38
+         - NY1TRITSEL39
+         - NY1TRITSEL40
+         - NY1TRITSEL41
+         - NY1TRITSEL42
+        state: stopped
