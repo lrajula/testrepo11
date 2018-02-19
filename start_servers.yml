@@ -7,5 +7,6 @@
     - name: start list of servers
       clc_server:
         server_ids:
-         - NY1TRITTEST124
+         - NY1TRITSEL12
+         - NY1TRITSEL13
         state: started
