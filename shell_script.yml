@@ -4,7 +4,6 @@
   gather_facts: False
   connection: local
   vars:
-    public_key: "YOUR_PUBLIC_KEY_GOES_HERE"
     server_to_start: NY1TRITUBUSRV03
     server_password: VWxoRQ~h6gApeB/#
   tasks:
