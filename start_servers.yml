@@ -1,10 +1,10 @@
 ---
-- name: Start Servers
+- name: Start  Servers
   hosts: localhost
   gather_facts: False
   connection: local
   tasks:
-    - name: start list of servers
+    - name: start list of  servers
       clc_server:
         server_ids:
          - NY1TRITSEL12
