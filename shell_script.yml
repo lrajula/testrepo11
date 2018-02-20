@@ -38,7 +38,7 @@
 - name: Install Some Stuff
   hosts: SERVERS_GRP
   gather_facts: True
-  remote_user: root
+  connection: localhost
   tasks:
    - name: Execute shell multiple commands
      shell: |
