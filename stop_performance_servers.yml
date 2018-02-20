@@ -22,4 +22,4 @@
          - NY1TRITPYSRV04
          - NY1TRITPYSRV05
          - NY1TRITPYSRV11         
-        state: stopped
+        state: stopped 
