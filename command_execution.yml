@@ -24,7 +24,7 @@
         groups=target_servers
       with_items: start_server.servers
     
-- name: install software
+- name: execute shell command
   hosts: target_servers
   tasks:
   - shell: echo {{ name }}
