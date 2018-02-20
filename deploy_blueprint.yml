@@ -1,0 +1,6 @@
+- name: Deploy package
+      clc_blueprint_package:
+        server_ids:
+            - NY1TRITUBUSRV03
+        package_id: 31fe87a9-89d9-4984-a56e-e8139892b622
+        package_params: {}
