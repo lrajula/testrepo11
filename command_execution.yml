@@ -12,18 +12,18 @@
     - name: Lookup Server
       clc_server_fact:
         server_id: "{{ server_id }}"
-        credentials: true
-      register: server_fact
-
-    - name: Add new servers to in-memory inventory.
+        credentials: false
+      register: start_server.servers
+    
+    - name: Add New Servers to an in-memory Group
       add_host:
-        name={{ server_fact['server']['name'] }}
-        ansible_ssh_host={{ server_fact['server']['details']['ipAddresses'][0]['internal'] }}
+        name={{ item.name }}
+        ansible_ssh_host={{ item.details.ipAddresses[0].internal }}
         ansible_ssh_user=root
-        ansible_ssh_pass=Ve9K~bzLgF6#-i#_
-        groups=target_servers
-
+        groupname=SERVERS_GRP
+      with_items: start_server.servers
+    
 - name: install software
-  hosts: target_servers
+  hosts: SERVERS_GRP
   tasks:
   - shell: echo {{ name }}
