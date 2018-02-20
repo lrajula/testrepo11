@@ -1,0 +1,53 @@
+---
+- name: Start a Server
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  vars:
+    public_key: "YOUR_PUBLIC_KEY_GOES_HERE"
+    server_to_start: NY1TRITUBUSRV03
+    server_password: VWxoRQ~h6gApeB/#
+  tasks:
+    - name: Start Server
+      clc_server:
+        server_ids: "{{ server_to_start }}"
+        state: started
+      register: start_server
+
+    - name: Wait for SSH to Come up on Started Servers
+      wait_for: host={{ item.details.ipAddresses[0].internal }} port=22 delay=5 timeout=320 state=started
+      with_flattened:
+        - start_server.servers
+
+    - name: Update known_hosts With Started Server
+      shell: "ssh-keygen -R {{ item.details.ipAddresses[0].internal }} && ssh-keyscan -t rsa -H {{ item.details.ipAddresses[0].internal }} >> ~/.ssh/known_hosts"
+      with_items: start_server.servers
+
+    - name: Deploy SSH Key to New Servers (Ubuntu)
+      shell: "echo '{{ public_key }}'|sshpass -p '{{ server_password }}' ssh root@{{ item.details.ipAddresses[0].internal }} 'cat >> ~/.ssh/authorized_keys'"
+      with_flattened:
+        - start_server.servers
+
+    - name: Add New Servers to an in-memory Group
+      add_host:
+        name={{ item.name }}
+        ansible_ssh_host={{ item.details.ipAddresses[0].internal }}
+        ansible_ssh_user=root
+        groupname=SERVERS_GRP
+      with_items: start_server.servers
+
+- name: Install Some Stuff
+  hosts: SERVERS_GRP
+  gather_facts: True
+  remote_user: root
+  tasks:
+    - name: Execute shell multiple commands
+      shell: |
+       touch /tmp/abc.txt
+       touch /tmp/a.txt
+
+
+
+
+
+
