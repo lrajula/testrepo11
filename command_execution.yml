@@ -13,7 +13,7 @@
       clc_server_fact:
         server_id: "{{ server_id }}"
         credentials: true
-      register: start_server.servers
+      register: server_fact
     
     - name: Add new servers to in-memory inventory.
       add_host:
@@ -22,7 +22,6 @@
         ansible_ssh_user=root
         ansible_ssh_pass=Ve9K~bzLgF6#-i#_
         groups=target_servers
-      with_items: start_server.servers
     
 - name: execute shell command
   hosts: target_servers
