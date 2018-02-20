@@ -5,7 +5,7 @@
   connection: local
   vars:
     server_to_start: NY1TRITUBUSRV03
-    server_password: VWxoRQ~h6gApeB/#
+    server_password: Ve9K~bzLgF6#-i#_
   tasks:
     - name: Start Server
       clc_server:
