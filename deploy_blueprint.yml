@@ -1,7 +1,12 @@
 ---
-- name: Deploy package
-  clc_blueprint_package:
-   server_ids:
-    - NY1TRITUBUSRV03
-   package_id: f2696ff4-85fb-4d62-b6c2-294e1905bc9e
-   package_params: {}
+- name: Install a blue print package on set of servers
+  hosts: localhost
+  gather_facts: False
+  connection: local
+  tasks:
+    - name: Create server snapshot
+      clc_blueprint_package:
+        server_ids:
+            - NY1TRITUBUSRV03
+        package_id: f2696ff4-85fb-4d62-b6c2-294e1905bc9e
+        package_params: {}
