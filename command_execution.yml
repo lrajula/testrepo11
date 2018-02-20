@@ -1,0 +1,29 @@
+---
+- name: setup inventory
+  hosts: localhost
+  gather_facts: False
+  connection: local
+
+  vars:
+    server_id: NY1TRITUBUSRV03
+
+  tasks:
+
+    - name: Lookup Server
+      clc_server_fact:
+        server_id: "{{ server_id }}"
+        credentials: true
+      register: server_fact
+
+    - name: Add new servers to in-memory inventory.
+      add_host:
+        name={{ server_fact['server']['name'] }}
+        ansible_ssh_host={{ server_fact['server']['details']['ipAddresses'][0]['internal'] }}
+        ansible_ssh_user={{ server_fact['server']['credentials']['userName'] }}
+        ansible_ssh_pass={{ server_fact['server']['credentials']['password'] }}
+        groups=target_servers
+
+- name: install software
+  hosts: target_servers
+  tasks:
+  - shell: echo {{ name }}
