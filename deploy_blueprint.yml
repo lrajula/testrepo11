@@ -1,3 +1,4 @@
+---
 - name: Deploy package
   clc_blueprint_package:
    server_ids:
