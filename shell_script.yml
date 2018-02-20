@@ -13,15 +13,6 @@
         state: started
       register: start_server
 
-    - name: Wait for SSH to Come up on Started Servers
-      wait_for: host={{ item.details.ipAddresses[0].internal }} port=22 delay=5 timeout=320 state=started
-      with_flattened:
-        - start_server.servers
-
-    - name: Update known_hosts With Started Server
-      shell: "ssh-keygen -R {{ item.details.ipAddresses[0].internal }} && ssh-keyscan -t rsa -H {{ item.details.ipAddresses[0].internal }} >> ~/.ssh/known_hosts"
-      with_items: start_server.servers
-
     - name: Deploy SSH Key to New Servers (Ubuntu)
       shell: "sshpass -p '{{ server_password }}' ssh root@{{ item.details.ipAddresses[0].internal }} 'cat >> ~/.ssh/authorized_keys'"
       with_flattened:
