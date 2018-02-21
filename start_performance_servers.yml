@@ -1,10 +1,10 @@
 ---
-- name: Start  Servers
+- name: Start  performance Servers
   hosts: localhost
   gather_facts: False
   connection: local
   tasks:
-    - name: start list of  servers
+    - name: start list of performance servers
       clc_server:
         server_ids:
          - NY1TRITCE202
