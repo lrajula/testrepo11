@@ -1,10 +1,10 @@
 ---
-- name: Stop performence Servers
+- name: Stop  performance Servers
   hosts: localhost
   gather_facts: False
   connection: local
   tasks:
-    - name: stop list of performence servers
+    - name: stop list of performance servers
       clc_server:
         server_ids:
          - NY1TRITCE202
@@ -21,5 +21,5 @@
          - NY1TRITPLR02
          - NY1TRITPYSRV04
          - NY1TRITPYSRV05
-         - NY1TRITPYSRV11    
+         - NY1TRITPYSRV11   
         state: stopped
